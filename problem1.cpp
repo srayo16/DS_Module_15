@@ -14,11 +14,60 @@ class Solution
 public:
     bool isValid(string s)
     {
+        cout << "enter1" << endl;
+        stack<char> st;
+
+        for (char c : s)
+        {
+            if (c == '(' || c == '{' || c == '[')
+            {
+                cout << "enter2" << endl;
+                st.push(c);
+            }
+            else
+            {
+                cout << "enter3" << endl;
+                if (st.empty())
+                {
+                    cout << "enter4" << endl;
+
+                    return false;
+                }
+                else
+                {
+
+                    if ((c == ')' && st.top() == '(') || (c == '}' && st.top() == '{') || (c == ']' && st.top() == '['))
+                    {
+                        cout << "enter5" << endl;
+                        st.pop();
+                        // if (st.empty())
+                        // {
+                        //     cout << "enter6" << endl;
+
+                        //     return true;
+                        // }
+                        // else
+                        // {
+                        //     cout << "enter7" << endl;
+                        //     continue;
+                        // }
+                    }
+                    else
+                    {
+
+                        return false;
+                    }
+                }
+            }
+        }
+        return st.empty();
     }
 };
 
 int main()
 {
+    Solution s;
+    s.isValid("}");
 
     return 0;
 }
